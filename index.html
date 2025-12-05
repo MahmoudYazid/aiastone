@@ -3,149 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeTiles - Classic and Modern Ceramic Tilework for Home</title>
+    <title>Aiastone</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #8B7355 0%, #6B5444 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
         }
         
-        .hero-section {
-            background: linear-gradient(135deg, #8B7355 0%, #6B5444 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1600&q=80') center/cover;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #D4AF37;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
             width: 100%;
-        }
-        
-        .tile-card {
-            position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.8s ease-out;
         }
         
-        .tile-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .tile-card img {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .tile-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .tile-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 2rem;
-        }
-        
-        .tile-card:hover .tile-overlay {
-            opacity: 1;
-        }
-        
-        .section-divider {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, #D4AF37, #8B7355);
-            margin: 0 auto;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(212, 175, 55, 0.9);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-        
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-        
-        .gallery-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            z-index: 2;
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        .gallery-item:hover .gallery-icon {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -156,363 +42,110 @@
             }
         }
         
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .card-header {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+            padding: 40px;
+            text-align: center;
         }
         
-        .animate-delay-1 {
-            animation-delay: 0.2s;
-            opacity: 0;
+        .card-body {
+            padding: 40px;
         }
         
-        .animate-delay-2 {
-            animation-delay: 0.4s;
-            opacity: 0;
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
         
-        .animate-delay-3 {
-            animation-delay: 0.6s;
-            opacity: 0;
+        .info-item:hover {
+            background: #fef3c7;
+            transform: translateX(5px);
         }
         
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .mobile-menu.active {
-            max-height: 500px;
+        .icon-wrapper {
+            background: #D4AF37;
+            padding: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <div class="w-20 h-20 bg-white rounded-lg flex items-center justify-center">
-                        <img src="./background.jpeg">
-                    </div>
-                    
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="nav-link text-gray-700 hover:text-amber-600 font-medium">Home</a>
-                    <a href="#gallery" class="nav-link text-gray-700 hover:text-amber-600 font-medium">The Gallery</a>
-                    <a href="#centres" class="nav-link text-gray-700 hover:text-amber-600 font-medium">Shop Centres</a>
-                    <a href="#company" class="nav-link text-gray-700 hover:text-amber-600 font-medium">The Company</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-amber-600 font-medium">Contact</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+<body>
+    <div class="card">
+        <!-- Card Header -->
+        <div class="card-header">
+            <img src="./background.jpeg" alt="Company Logo" class="h-16 mx-auto mb-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Aiastone</h1>
+            <p class="text-amber-100 text-lg">Mining Inspection Services</p>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body">
+            <!-- Company Name -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Contact Information</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-amber-600 to-amber-400 mx-auto"></div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="info-item">
+                <div class="icon-wrapper">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                     </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden">
-                <div class="py-4 space-y-4">
-                    <a href="#" class="block text-gray-700 hover:text-amber-600 font-medium">Home</a>
-                    <a href="#gallery" class="block text-gray-700 hover:text-amber-600 font-medium">The Gallery</a>
-                    <a href="#centres" class="block text-gray-700 hover:text-amber-600 font-medium">Shop Centres</a>
-                    <a href="#company" class="block text-gray-700 hover:text-amber-600 font-medium">The Company</a>
-                    <a href="#contact" class="block text-gray-700 hover:text-amber-600 font-medium">Contact</a>
                 </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section text-white py-24 md:py-32 relative">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up">
-                    Classic and Modern<br>Ceramic Tilework for Home
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-200 animate-fade-in-up animate-delay-1">
-                    Discover the perfect blend of tradition and innovation
-                </p>
-                
-            </div>
-        </div>
-        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-50 to-transparent"></div>
-    </section>
-
-    <!-- Trendy Tiles Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Explore New Trendy Tiles</h2>
-                <div class="section-divider mb-6"></div>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Discover our latest collection of contemporary designs that blend artistry with functionality
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="tile-card bg-white shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&q=80" alt="Modern Tiles" class="w-full h-80 object-cover">
-                    <div class="tile-overlay">
-                        <div class="text-white">
-                            <h3 class="text-2xl font-bold mb-2">Modern Collection</h3>
-                            <p class="text-gray-200">Contemporary designs for modern spaces</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tile-card bg-white shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80" alt="Classic Tiles" class="w-full h-80 object-cover">
-                    <div class="tile-overlay">
-                        <div class="text-white">
-                            <h3 class="text-2xl font-bold mb-2">Classic Series</h3>
-                            <p class="text-gray-200">Timeless elegance for traditional homes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tile-card bg-white shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80" alt="Luxury Tiles" class="w-full h-80 object-cover">
-                    <div class="tile-overlay">
-                        <div class="text-white">
-                            <h3 class="text-2xl font-bold mb-2">Luxury Line</h3>
-                            <p class="text-gray-200">Premium materials and exquisite finishes</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-gray-100 rounded-2xl p-8 md:p-12">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Transform Your Space" or "Premium Quality Tiles" or something related to your business</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Transform Your Floors
-                        </p>
-                    </div>
-                    <div class="md:w-1/2 md:pl-12">
-                        <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=600&q=80" alt="Tile Pattern" class="rounded-lg shadow-xl">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interior Design Examples Section -->
-    <section id="gallery" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Examples of Interior Design</h2>
-                <div class="section-divider"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Bathroom Design" class="w-full h-72 object-cover">
-                    <div class="gallery-icon">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Kitchen Design" class="w-full h-72 object-cover">
-                    <div class="gallery-icon">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Living Room" class="w-full h-72 object-cover">
-                    <div class="gallery-icon">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="Floor Design" class="w-full h-72 object-cover">
-                    <div class="gallery-icon">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Company Info Section -->
-    <section id="company" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- About Company -->
-                <div class="text-center lg:text-left bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="inline-block p-4 bg-amber-100 rounded-full mb-6">
-                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h5 class="text-sm font-semibold text-amber-600 mb-3 uppercase tracking-wider">Read More About Our Company</h5>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">We Are Specialized in Ceramic Tiles Production</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        BeTiles is technologically the most contemporary factory in the universe nowadays. We combine innovation with craftsmanship.
-                    </p>
-                   
-                </div>
-                
-                <!-- Shop Centres -->
-                <div id="centres" class="text-center lg:text-left bg-amber-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="inline-block p-4 bg-amber-600 rounded-full mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h5 class="text-sm font-semibold text-amber-600 mb-3 uppercase tracking-wider">Where to Buy</h5>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Check Our Shops and Centres</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Find our tiles at authorized dealers and showrooms across the country. Visit our locations to experience our products firsthand.
-                    </p>
-                   
-                </div>
-                
-                <!-- Partnership -->
-                <div class="text-center lg:text-left bg-gray-800 text-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="inline-block p-4 bg-amber-600 rounded-full mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <h5 class="text-sm font-semibold text-amber-400 mb-3 uppercase tracking-wider">Partnership</h5>
-                    <h3 class="text-2xl font-bold mb-4">Want to Become a Partner? Let's Talk!</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Join our network of partners and bring premium ceramic tiles to your customers. We offer competitive terms and full support.
-                    </p>
-                 
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 text-gray-300 py-16">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Logo & About -->
                 <div>
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-40 h-40 bg-gradient-to-br from-amber-600 to-amber-800 rounded-lg flex items-center justify-center">
-                                                    <img src="./background.jpeg">
-
-                        </div>
-                        <span class="text-xl font-bold text-white"></span>
-                    </div>
-                    <p class="text-sm leading-relaxed">
-                    </p>
-                </div>
-                
-                <!-- About Us -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">About Us</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Our Story</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Quality Standards</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Sustainability</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Certifications</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Our Mission -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">Our Mission</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Innovation</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Quality Assurance</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Customer Service</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Global Presence</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Centre -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4">Contact Centre</h4>
-                    <p class="text-sm mb-4 leading-relaxed">
-                        GÜRSU MH. 337 SK. ALTIN SITESI <br> A KISIM 3 L Всок K/2 D/6
-
-
-                    </p>
-                    <div class="space-y-2 text-sm">
-                        <p><strong class="text-white">Contact us:</strong> +905016008809</p>
-                        <p><strong class="text-white">Write us:</strong> Aia@aiastone.com</p>
-                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Phone</h3>
+                    <p class="text-gray-600">+905016008809</p>
                 </div>
             </div>
             
-            <!-- Copyright -->
-         
-        </div>
-    </footer>
+            <!-- Email -->
+            <div class="info-item">
+                <div class="icon-wrapper">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Email</h3>
+                    <p class="text-gray-600"> Aia@aiastone.com</p>
+                </div>
+            </div>
+            
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                }
-            });
-        });
-        
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all cards and sections for animation
-        document.querySelectorAll('.tile-card, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+            
+            <!-- Address -->
+            <div class="info-item">
+                <div class="icon-wrapper">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Office Address</h3>
+                    <p class="text-gray-600">GÜRSU MH. 337 SK.
+
+ALTIN SITESI A KISIM
+
+3 L Всок K/2 D/6
+
+This is the address</p>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
 </body>
 </html>
